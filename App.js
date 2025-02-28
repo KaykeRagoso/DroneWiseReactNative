@@ -38,6 +38,9 @@ export default function App() {
         />
       </View>
 
+      {/* Botão de Login */}
+      <Button title="Login" onPress={() => alert('Login efetuado com sucesso!')} />
+
       {/* Rodapé */}
       <View style={styles.footer}>
         <Text style={styles.textfooter}>Copyright 2025. Todos os direitos reservados.</Text>
