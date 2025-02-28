@@ -1,6 +1,6 @@
 import React, { useState } from 'react'; // Importando React e useState corretamente
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput } from 'react-native'; // Importando TextInput de 'react-native'
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native'; // Importando TextInput de 'react-native'
 import { Button } from 'react-native-web';
 
 export default function App() {
@@ -38,8 +38,22 @@ export default function App() {
         />
       </View>
 
-      {/* Botão de Login */}
-      <Button title="Login" onPress={() => alert('Login efetuado com sucesso!')} />
+      {/* Botão */}
+      <View style={styles.button}>
+        <TouchableOpacity
+          onPress={() => {
+            if (texto.trim() !== "" && numero.trim() !== "") {
+              alert("Login efetuado com sucesso!");
+              console.log("Login:", texto, "Senha:", numero);
+            } else {
+              alert("Preencha todos os campos!");
+            }
+          }}
+          style={styles.buttonStyle}
+        >
+          <Text style={styles.buttonText}>Entrar</Text>
+          </TouchableOpacity>
+      </View>
 
       {/* Rodapé */}
       <View style={styles.footer}>
@@ -48,6 +62,7 @@ export default function App() {
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -79,9 +94,10 @@ const styles = StyleSheet.create({
   },
   footer: {
     position: 'absolute',
-    bottom: 10,
-    left: 0,
-    right: 0,
+    padding: 0,
+    bottom: 0,
+    width: '100%',
+    height: 50,
     alignItems: 'center',
   },
   textfooter: {
@@ -100,5 +116,23 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: 'Comic Sans MS',
     fontSize: 14,
+  },
+  button: {
+    width: 100,
+    marginTop: 20, // Adiciona espaço acima do botão
+    color: 'black',
+    backgroundColor: 'white',
+    borderRadius: 5,
+  },
+  buttonStyle: {
+    backgroundColor: '#4CAF50',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    textAlign: 'center',
   },
 });
