@@ -1,6 +1,8 @@
 import React, { useState } from 'react'; // Importando React e useState corretamente
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TextInput } from 'react-native'; // Importando TextInput de 'react-native'
+
+import { StyleSheet, Text, View, TextInput, ScrollView, TouchableOpacity } from 'react-native'; // Importando TextInput de 'react-native'
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native'; // Importando TextInput de 'react-native'
 import { Button } from 'react-native-web';
 
 export default function App() {
@@ -8,94 +10,144 @@ export default function App() {
   const [numero, setNumero] = useState('');
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.textLogo}>Teste</Text>
-      <StatusBar style="auto" />
+      <ScrollView>
 
-      {/* Campo Login */}
-      <View style={styles.login}>
-        <Text style={styles.textloginName}>Login </Text>
-        <TextInput
-          style={styles.MeuTextInput}
-          value={texto}
-          onChangeText={setTexto} // Corrigindo onChangeText
-          placeholder="Digite seu login"
-          placeholderTextColor="gray"
-        />
-      </View>
+          <View style={styles.container}>
+            <Text style={styles.textLogo}>TESTE</Text>
+            <StatusBar style="auto" />
+            </View>
 
-      {/* Campo Senha */}
-      <View style={styles.login}>
-        <Text style={styles.textloginName}>Senha</Text>
-        <TextInput
-          style={styles.MeuTextInput}
-          value={numero}
-          onChangeText={(text) => setNumero(text)} // Mantendo como string
-          keyboardType="numeric"
-          placeholder="Digite sua senha"
-          placeholderTextColor="gray"
-          secureTextEntry // Esconde o texto digitado
-        />
-      </View>
+            {/* Campo Login */}
+            <View style={styles.login}>
+              <Text style={styles.textLogin}>Login</Text>
+              <TextInput
+                style={styles.TextInputLogin}
+                value={texto}
+                onChangeText={setTexto} // Corrigindo onChangeText
+                placeholder="Digite seu login"
+                placeholderTextColor="gray"
+              />
+            </View>
 
-      {/* Rodapé */}
-      <View style={styles.footer}>
-        <Text style={styles.textfooter}>Copyright 2025. Todos os direitos reservados.</Text>
-      </View>
-    </View>
+
+            {/* Campo Senha */}
+            <View style={styles.login}>
+              <Text style={styles.textSenha}>Senha</Text>
+              <TextInput
+                style={styles.TextInputSenha}
+                value={numero}
+                onChangeText={(text) => setNumero(text)} // Mantendo como string
+                keyboardType="numeric"
+                placeholder="Digite sua senha"
+                placeholderTextColor="gray"
+                secureTextEntry // Esconde o texto digitados
+              />
+            </View>
+
+            {/* Botão */}
+            {/* <View style={styles.button}>
+                  <TouchableOpacity
+                    onPress={() => {
+                      if (texto.trim() !== "" && numero.trim() !== "") {
+                        alert("Login efetuado com sucesso!");
+                        console.log("Login:", texto, "Senha:", numero);
+                      } else {
+                        alert("Preencha todos os campos!");
+                      }
+                    }}
+                    style={styles.buttonStyle}
+                  >
+                    <Text style={styles.buttonText}>Entrar</Text>
+                    </TouchableOpacity>
+              </View> */}
+        
+
+            {/* Rodapé */}
+            <View style={styles.footer}>
+              <Text style={styles.textfooter}>Copyright 2025. Todos os direitos reservados.</Text>
+            </View>
+      </ScrollView>
+
   );
 }
 
+
 const styles = StyleSheet.create({
+  //Componentes
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    justifyContent: 'center',
+    display: 'flex',
+    backgroundColor: 'red',
+    flexDirection: 'row',
+    position: 'relative',
+    padding: 40,
+    top: 25
+  },
+  login: {
+    flex: 2,
+    justifyContent: 'center', 
+    display: 'flex',
+    backgroundColor: 'green',
     alignItems: 'center',
-    justifyContent: 'flex-star', // Centraliza tudo na tela
+    position: 'relative',
+    padding: 144,
+
+  },
+  footer: {
+    flex: 3,
+    justifyContent: 'center', 
+    display: 'flex',
+    backgroundColor: 'blue',
+    alignItems: 'center',
+    position: 'relative',
     padding: 20,
+  },
+
+
+  //Textos
+  textLogo: {
+    fontWeight: 'bold',
+    fontSize: 24,
+    color: 'white',
+  },
+  textLogin: {
+    fontWeight: 'bold',
+    fontSize: 24,
+    color: 'white',
+    top: 80
     
   },
-  textLogo: {
-    color: "white",
+  textSenha: {
     fontWeight: 'bold',
-    fontFamily: 'Comic Sans MS',
-    fontSize: 20,
-    marginTop: 50,
-    marginBottom: 180, // Adiciona espaço abaixo do logo
+    fontSize: 24,
+    color: 'white',
+    bottom: 140
+
   },
-  MeuTextInput: {
+
+  //Inputs
+  TextInputLogin: {
     backgroundColor: 'white', // Muda para branco para ser visível
-    color: 'black', // Mantém o texto visível
     height: 40,
-    width: 200, // Define um tamanho adequado
-    margin: 10,
+    width: 175,
     borderWidth: 1,
     borderColor: 'gray',
     paddingHorizontal: 10,
     borderRadius: 5, // Borda arredondada
+    top: 120,
   },
-  footer: {
-    position: 'absolute',
-    bottom: 10,
-    left: 0,
-    right: 0,
-    alignItems: 'center',
+
+  TextInputSenha: {
+    backgroundColor: 'white', // Muda para branco para ser visível
+    height: 40,
+    width: 175,
+    borderWidth: 1,
+    borderColor: 'gray',
+    paddingHorizontal: 10,
+    borderRadius: 5, // Borda arredondada
+    bottom: 120,
   },
-  textfooter: {
-    color: "white",
-    fontWeight: 'bold',
-    fontFamily: 'Comic Sans MS',
-    fontSize: 12,
-  },
-  login: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 20, // Adiciona espaço entre os inputs
-  },
-  textloginName: {
-    color: "white",
-    fontWeight: 'bold',
-    fontFamily: 'Comic Sans MS',
-    fontSize: 14,
-  },
+
+
 });
