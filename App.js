@@ -38,7 +38,7 @@ export default function App() {
           keyboardType="numeric"
           placeholder="Digite sua senha"
           placeholderTextColor="gray"
-          secureTextEntry // Esconde o texto digitados
+          secureTextEntry // Esconde o texto digitado
         />
       </View>
 
